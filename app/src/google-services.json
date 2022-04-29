@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "298185074642",
+    "project_id": "course-booking-app-bakery",
+    "storage_bucket": "course-booking-app-bakery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298185074642:android:c8e76f71d7c64c1ee68a0b",
+        "android_client_info": {
+          "package_name": "com.example.coursebooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298185074642-5ai62mbjp2qa5cnfksnuhtcciqvt8gh3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVR6CC-BOhaTfsFFgNBMQHFE-v6HHeGdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298185074642-5ai62mbjp2qa5cnfksnuhtcciqvt8gh3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
