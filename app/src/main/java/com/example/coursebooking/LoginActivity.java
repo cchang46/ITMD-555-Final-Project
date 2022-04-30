@@ -3,13 +3,18 @@ package com.example.coursebooking;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.coursebooking.services.LoginService;
+
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
     Button b1, b2;
@@ -38,24 +43,19 @@ public class LoginActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ed1.getText().toString().equals("admin") &&
-                        ed2.getText().toString().equals("admin")) {
-                    //Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                final LoginService loginService = new LoginService(LoginActivity.this);
+                loginService.signin(new LoginService.VolleyResponseListener() {
+                    @Override
+                    public void onError(String message) {
+                        Toast.makeText(getApplicationContext(), "Wrong Credentials... " , Toast.LENGTH_SHORT).show();
+                    }
 
-                    //Enter calendar
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent intent = new Intent(getBaseContext(), ScheduleActivity.class);
-                            startActivity(intent);
-                        }
-                    }, 1000);
-
-                } else {
-
-                    Toast.makeText(getApplicationContext(), "Wrong Credentials... " , Toast.LENGTH_SHORT).show();
-
-                }
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Intent intent = new Intent(getBaseContext(), ScheduleActivity.class);
+                        startActivity(intent);
+                    }
+                }, ed1.getText().toString(), ed2.getText().toString());
             }
         });
 
